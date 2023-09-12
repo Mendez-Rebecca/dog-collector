@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Dog
 
 dogs = [
     {'name': 'Brutus', 'breed': 'Staffordshire Terrier', 'description': 'Old and grumpy', 'age': 11},
@@ -14,4 +15,5 @@ def about(request):
     return render(request, 'about.html')
 
 def dogs_index(request):
+    dogs = Dog.objects.all()
     return render(request, 'dogs/index.html', {'dogs': dogs})
